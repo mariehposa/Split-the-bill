@@ -18,12 +18,12 @@ export const Dashboard = ({ debt }) => {
             </Grid>
             <Grid item xs={8} md={3} lg={4}>
               <Paper className={fixedHeightPaper} style={styles}>
-                Owing Balance
+                Total Debt
               </Paper>
             </Grid>
             <Grid item xs={8} md={3} lg={4}>
               <Paper className={fixedHeightPaper} style={styles}>
-                Owed Balance
+                Expected Amount
               </Paper>
             </Grid>
             <Grid item xs={8} md={3} lg={4}>

@@ -92,4 +92,7 @@ export const Login = (props) => {
     );
 }
 
-export default connect(state => state, actionCreators)(Login);
+export default connect(
+    state => state, 
+    actionCreators
+)(Login);
