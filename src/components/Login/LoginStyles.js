@@ -4,7 +4,7 @@ export const OuterDiv = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100vh;
+    height: 110vh;
     box-sizing: border-box;
     justify-content: center;
     align-content: center;

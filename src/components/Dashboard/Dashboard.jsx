@@ -6,9 +6,20 @@ import { Grid, Paper, } from '@material-ui/core';
 
 export const Dashboard = ({ debt }) => {
     const classes = useStyles();
-    const styles = {height: '100px', backgroundColor: '#FFB884'}
 
+    const styles = {height: '100px', backgroundColor: '#FFB884'}
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+    const eachDebt = debt.map(d => Number(d.amount))
+    console.log(debt)
+    console.log(eachDebt)
+    const totalDebt = eachDebt.reduce((a, acc) => {
+      return a + acc;
+    }, 0)
+    
+    // .reduce((add, acc) => {
+    //   return 
+    // })
     return (
         <Grid container spacing={3}>
             <Grid item xs={8} md={3} lg={4}>
@@ -18,7 +29,8 @@ export const Dashboard = ({ debt }) => {
             </Grid>
             <Grid item xs={8} md={3} lg={4}>
               <Paper className={fixedHeightPaper} style={styles}>
-                Total Debt
+                Total Debt:
+                <h4>{totalDebt.toFixed(2)}</h4>
               </Paper>
             </Grid>
             <Grid item xs={8} md={3} lg={4}>
