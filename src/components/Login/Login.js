@@ -4,78 +4,15 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import * as actionCreators from '../../state/actionCreators';
-import styled from 'styled-components';
 import axios from 'axios';
+import { OuterDiv, InnerDiv, StyledInnerDiv, FontDiv, Styledfont, Surround, Button } from './LoginStyles'
 
-const OuterDiv = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-    box-sizing: border-box;
-    justify-content: center;
-    align-content: center;
-`
+const loginURL = 'https://split-the-bill-api.herokuapp.com/api/auth/login';
 
-const InnerDiv = styled.div`
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    background-color: #FFB884;
-    border-radius: 1em;
-    justify-content: space-evenly;
-    width: 50%;
-    height: 70%;
-    align-self: center;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-`
-
-const StyledInnerDiv = styled.div`
-    padding: 1em;
-    margin: 0 auto;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-`
-
-const Styledfont = styled.h3`
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 2.0em;
-    margin: 0.2em;
-`
-
-const Surround = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 50%;
-`
-
-const FontDiv = styled.div`
-    display: flex;
-    height: 10%;
-    justify-content: center;
-`
-
-const Button = styled.button`
-    color: white;
-    background-color: #75C22F;
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 1.3em;
-    font-family: system-ui, sans-serif;
-    border-radius: 0.3em;
-    padding: 0.5em;
-    margin: 1rem;
-    text-decoration: none;
-    border: 0;
-    cursor: pointer;
-`
-
-
-
+const initialValues = {
+    email: '', 
+    password: ''
+}
 
 const validationSchema = yup.object().shape({
     email: yup.string()
@@ -85,16 +22,13 @@ const validationSchema = yup.object().shape({
         .required('a password is required'),
 });
 
-const loginURL = 'https://split-the-bill-api.herokuapp.com/api/auth/login';
-
 export const Login = (props) => {
+
     const onLogin = (formValues, actions) => {
         const details = {
             email: formValues.email,
             password: formValues.password
         }
-
-
 
         axios.post(loginURL, details)
             .then(res => {
@@ -120,7 +54,7 @@ export const Login = (props) => {
 
     return (
         <Formik
-            initialValues={{ email: '', password: '' }}
+            initialValues={initialValues}
             onSubmit={onLogin}
             validationSchema={validationSchema}
             render={(props) => (
@@ -131,7 +65,6 @@ export const Login = (props) => {
                         </FontDiv>
                         <Surround>
                             <Form className='login'>
-
                                 <StyledInnerDiv>
                                     <Field style={styles2} name='email' type="text" placeholder='Email' />
                                     <ErrorMessage name='email' component='div'/>
@@ -150,7 +83,6 @@ export const Login = (props) => {
                                         </Link>
                                     </section>                                    
                                 </StyledInnerDiv>
-
                             </Form>
                         </Surround>
                     </InnerDiv>
