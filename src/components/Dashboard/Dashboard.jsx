@@ -19,31 +19,35 @@ export const Dashboard = ({ debt, bills }) => {
       .reduce((d, acc) => d + acc ,0)
 
     const expectedAmount = billsAmount - totalDebt;
+
+    const totalBalance = totalDebt + expectedAmount;
+
     return (
-        <Grid container spacing={3}>
-            <Grid item xs={8} md={4} lg={4}>
-                <Paper className={fixedHeightPaper} style={styles}>
-                Total Balance
-              </Paper>
-            </Grid>
-            <Grid item xs={8} md={4} lg={4}>
+      <Grid container spacing={3}>
+          <Grid item xs={8} md={4} lg={4}>
               <Paper className={fixedHeightPaper} style={styles}>
-                Total Debt:
-                <h4>{totalDebt.toFixed(2)}</h4>
-              </Paper>
-            </Grid>
-            <Grid item xs={8} md={4} lg={4}>
-              <Paper className={fixedHeightPaper} style={styles}>
-                Expected Amount
-                <h4>{expectedAmount.toFixed(2)}</h4>
-              </Paper>
-            </Grid>
-            <Grid item xs={8} md={12} lg={4}>
-              <Paper className={classes.paper} style={styles}>
-                List
-              </Paper>
-            </Grid>
+              Total Balance
+              <h4>{totalBalance.toFixed(2)}</h4>
+            </Paper>
           </Grid>
+          <Grid item xs={8} md={4} lg={4}>
+            <Paper className={fixedHeightPaper} style={styles}>
+              Total Debt
+              <h4>{totalDebt.toFixed(2)}</h4>
+            </Paper>
+          </Grid>
+          <Grid item xs={8} md={4} lg={4}>
+            <Paper className={fixedHeightPaper} style={styles}>
+              Expected Amount
+              <h4>{expectedAmount.toFixed(2)}</h4>
+            </Paper>
+          </Grid>
+          <Grid item xs={8} md={12} lg={4}>
+            <Paper className={classes.paper} style={styles}>
+              List
+            </Paper>
+          </Grid>
+        </Grid>
     )
 }
 const mapStateToProps = state => ({
