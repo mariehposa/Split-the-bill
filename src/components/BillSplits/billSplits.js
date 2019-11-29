@@ -84,6 +84,7 @@ export function BillSplits(props) {
 
 function Split(props){
     const {split, approve} = props;
+    console.log(split)
 
     return (
         <Card>

@@ -67,13 +67,11 @@ const createBillURL = 'https://split-the-bill-api.herokuapp.com/api/bills';
 
 const CreateBill = (props) => {
 
-
     const createBill = (formValues, actions) => {
         const details = {
             amount: formValues.amount,
             title: formValues.title
         }
-
 
         AxiosAuth()
             .post(createBillURL, details)
@@ -122,9 +120,6 @@ const CreateBill = (props) => {
                         </FontDiv>
                         <Surround>
                             <Form className='createbill'>
-
-
-
                                 <StyledInnerDiv>
                                     <Field style={styles2} name='title' type="text" placeholder='Title' />
                                     <ErrorMessage name='title' component='div' />
